@@ -1,0 +1,17 @@
+name: Download Julia
+
+on:
+  workflow_dispatch:
+
+jobs:
+  download:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download Julia
+        run: |
+          wget https://julialang-s3.julialang.org/bin/linux/x64/1.12/julia-1.12.6-linux-x86_64.tar.gz
+      - name: Upload as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: julia-binaries
+          path: julia-*.tar.gz
